@@ -1,4 +1,4 @@
-# Brian's Brain with a twist
+# Brian's Brain
 
 Brian's Brain is a cellular automaton that has the following rules
 
@@ -19,7 +19,7 @@ Here is an example simulation:
 With this simulation, the user will be able to
 
 - Create the simulation with the push of a button.
-- Choose a preset of initial states.
+- Choose from a preset of initial states.
 - Create their own initial state.
 - Pause the simulation to add more `on` cells.
 
@@ -47,7 +47,6 @@ This simulation will use the following technologies:
 
 This project will include several javascript files
 
-- `instruction.js` will render the modal that describes how the simulation works.
 - `board.js` will render the gameboard.
 - `simulation.js` will handle the logic of the simulation and determine the new state of the cell.
 - `cell.js` will be used as an object that track a cell's current state.
