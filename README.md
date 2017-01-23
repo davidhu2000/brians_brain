@@ -33,9 +33,11 @@ Also, this project will include
 
 This game will consist of a game board with basic instructions on the left hand side, and navigation links and Github and LinkedIn on the right. Inside the game board, the game initialize with a sample state. The user can click play to start the simulation.
 
+![Game board](wireframes/game_page.png)
+
 The user can click the question button to get more detailed explanation of how the simulation works.
 
-![Game board](wireframes/game_page.png)
+![Instruction Modal](wireframes/modal.png)
 
 ## Architecture and Technologies
 
