@@ -29,7 +29,7 @@ function generateGrid() {
       let id = square.x + "_" + square.y;
       squares[id] = {
         square: square,
-        clicked: false
+        state: 'off'
       };
     }
   }
@@ -43,13 +43,17 @@ function handleClick(e) {
 
 function changeGridColor(e) {
   let current = squares[e.target.x + "_" + e.target.y];
+  let color;
 
-  if(current.clicked) {
-    current.square.graphics.beginFill('#fff').drawRect(0, 0, gridSize, gridSize);
+  if(current.state === 'off') {
+    color = '#00ffed';
+    current.state = 'on';
   } else {
-    current.square.graphics.beginFill('#00ffed').drawRect(0, 0, gridSize, gridSize);
+    color = '#fff';
+    current.state = 'off';
   }
-  current.clicked = !current.clicked;
+
+  current.square.graphics.beginFill(color).drawRect(0, 0, gridSize, gridSize);
 }
 
 $(document).ready( () => {
