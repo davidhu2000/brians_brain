@@ -12,7 +12,7 @@ The dying state leads to directional movement, so many patterns in Brain's Brain
 
 Here is an example simulation:
 
-![Brian's Brain Simulation](images/brians_brain.gif)
+![Brian's Brain Simulation](docs/images/brians_brain.gif)
 
 ## Functionality and MVP
 
@@ -33,11 +33,11 @@ Also, this project will include
 
 This game will consist of a game board with basic instructions on the left hand side, and navigation links and Github and LinkedIn on the right. Inside the game board, the game initialize with a sample state. The user can click play to start the simulation.
 
-![Game board](wireframes/game_page.png)
+![Game board](docs/wireframes/game_page.png)
 
 The user can click the question button to get more detailed explanation of how the simulation works.
 
-![Instruction Modal](wireframes/modal.png)
+![Instruction Modal](docs/wireframes/modal.png)
 
 ## Architecture and Technologies
 
