@@ -1,0 +1,6 @@
+@import url('base/reset.css');
+@import url('base/grid.css');
+
+.red {
+  background: red;
+}
