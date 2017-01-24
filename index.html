@@ -3,25 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>Brian's Brain</title>
-    <link rel="stylesheet" href="assets/stylesheets/main.css" />
+    <link rel="stylesheet" href="stylesheets/main.css" />
+    <script type="text/javascript" src='bundle.js'></script>
   </head>
   <body>
-    <div class='col col-9 col-offset-05 red'>
-      <h1 class='main-header'>Brian's Brain</h1>
+    <div class='container'>
+      <div class='col col-9 col-offset-05 border'>
+        <h1 class='main-header border'>Brian's Brain</h1>
 
-        <div class="col col-1 gray">
-          test
+        <div class='main-section'>
+
+          <div class="col col-1 border">
+            test
+          </div>
+
+          <div class="col col-8 border main-board">
+
+            <div class='navigation col-10 border'>
+              buttons
+            </div>
+
+            <canvas id='canvas' width='800px' height='800px' class='border'>
+              The game board should appear here.
+            </canvas>
+          </div>
+
+          <div class="col col-1 border">
+            test
+          </div>
         </div>
-
-        <div class="col col-8 blue">
-          test
-        </div>
-
-        <div class="col col-1 yellow">
-          test
-        </div>
-
+      </div>
     </div>
-
   </body>
 </html>

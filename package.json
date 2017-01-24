@@ -1,0 +1,26 @@
+{
+  "name": "brians_brain",
+  "version": "1.0.0",
+  "description": "Brian's Brain is a cellular automaton that has the following rules",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidhu2000/brians_brain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidhu2000/brians_brain/issues"
+  },
+  "homepage": "https://github.com/davidhu2000/brians_brain#readme",
+  "dependencies": {
+    "webpack": "^1.14.0"
+  }
+}
