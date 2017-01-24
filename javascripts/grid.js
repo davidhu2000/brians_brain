@@ -11,6 +11,7 @@ Grid.prototype.drawGrid = function(size) {
 
   for(let c = 0; c < numGridCol; c++) {
     for(let r = 0; r < numGridRow; r++) {
+      
     }
   }
 };

@@ -1,8 +1,11 @@
 /* global createjs */
 
+const Simulation = require('./simulation');
+
+
 let stage;
-let squares = [];
-let boardSize = 600;
+let squares = {};
+let boardSize = 100;
 let gridSize = 50;
 
 function generateGrid() {
@@ -10,8 +13,8 @@ function generateGrid() {
 
   let numSq = boardSize / gridSize;
 
-  for(let c = 0; c < numSq; c++) {
-    for(let r = 0; r < numSq; r++) {
+  for(let r = 0; r < numSq; r++) {
+    for(let c = 0; c < numSq; c++) {
       square = new createjs.Shape();
 
       square.graphics.beginStroke('#000');
@@ -20,8 +23,8 @@ function generateGrid() {
       square.graphics.beginFill('#fff');
 
       square.graphics.drawRect(0, 0, gridSize, gridSize);
-      square.x = gridSize * r;
-      square.y = gridSize * c;
+      square.x = gridSize * c;
+      square.y = gridSize * r;
       square.addEventListener("click", handleClick);
 
       stage.addChild(square);
@@ -29,7 +32,8 @@ function generateGrid() {
       let id = square.x + "_" + square.y;
       squares[id] = {
         square: square,
-        state: 'off'
+        state: 'off',
+        pos: id
       };
     }
   }
@@ -37,6 +41,7 @@ function generateGrid() {
 }
 
 function handleClick(e) {
+  // console.log(e.target.x + '_' + e.target.y);
   changeGridColor(e);
   stage.update();
 }
@@ -46,7 +51,7 @@ function changeGridColor(e) {
   let color;
 
   if(current.state === 'off') {
-    color = '#00ffed';
+    color = '#0072ff';
     current.state = 'on';
   } else {
     color = '#fff';
@@ -59,4 +64,9 @@ function changeGridColor(e) {
 $(document).ready( () => {
   stage = new createjs.Stage("simCanvas");
   generateGrid();
+  let simulation = new Simulation(stage, squares, gridSize, boardSize);
+
+  window.stage = stage;
+  window.s = simulation;
+  window.sqs = squares;
 });
