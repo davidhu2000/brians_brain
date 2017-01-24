@@ -2,7 +2,7 @@
 
 let stage;
 let squares = [];
-let boardSize = 800;
+let boardSize = 600;
 let gridSize = 50;
 
 function generateGrid() {
@@ -27,20 +27,29 @@ function generateGrid() {
       stage.addChild(square);
 
       let id = square.x + "_" + square.y;
-      squares[id] = square;
+      squares[id] = {
+        square: square,
+        clicked: false
+      };
     }
   }
   stage.update();
 }
 
 function handleClick(e) {
-  console.log('clicked');
-  console.log(e.target.x);
-  console.log(e.target.y);
-  var current = squares[e.target.x + "_" + e.target.y];
-  console.log(current);
-  current.graphics.beginFill('red').drawRect(0, 0, gridSize, gridSize);
+  changeGridColor(e);
   stage.update();
+}
+
+function changeGridColor(e) {
+  let current = squares[e.target.x + "_" + e.target.y];
+
+  if(current.clicked) {
+    current.square.graphics.beginFill('#fff').drawRect(0, 0, gridSize, gridSize);
+  } else {
+    current.square.graphics.beginFill('#00ffed').drawRect(0, 0, gridSize, gridSize);
+  }
+  current.clicked = !current.clicked;
 }
 
 $(document).ready( () => {
