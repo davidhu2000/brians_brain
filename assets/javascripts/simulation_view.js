@@ -4,6 +4,7 @@ const Simulation = require('./simulation');
 
 let stage;
 let squares = {};
+let states = {};
 let boardSize = 600;
 let gridSize = 10;
 
@@ -61,8 +62,9 @@ function generateGrid() {
       stage.addChild(square);
 
       let id = square.x + "_" + square.y;
-      squares[id] = {
-        square: square,
+      squares[id] = square;
+      
+      states[id] = {
         state: 'off',
         pos: id
       };
@@ -78,18 +80,22 @@ function handleClick(e) {
 }
 
 function changeGridColor(e) {
-  let current = squares[e.target.x + "_" + e.target.y];
+  let id = e.target.x + "_" + e.target.y;
+  let currentSq = squares[id];
+  let currentState = states[id];
   let color;
 
-  if(current.state === 'off') {
+  if(currentState.state === 'off') {
     color = '#fff';
-    current.state = 'on';
+    currentState.state = 'on';
+    // currentState.state = 'on';
   } else {
     color = '#000';
-    current.state = 'off';
+    currentState.state = 'off';
+    // currentState.state = 'off';
   }
 
-  current.square.graphics.beginFill(color).drawRect(0, 0, gridSize, gridSize);
+  currentSq.graphics.beginFill(color).drawRect(0, 0, gridSize, gridSize);
 }
 
 
@@ -106,7 +112,7 @@ function tick(event) {
 $(document).ready( () => {
   stage = new createjs.Stage("simCanvas");
   generateGrid();
-  let simulation = new Simulation(stage, squares, gridSize, boardSize);
+  let simulation = new Simulation(stage, squares, states, gridSize, boardSize);
   createjs.Ticker.addEventListener("tick", tick);
 
 

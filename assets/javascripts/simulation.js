@@ -1,7 +1,7 @@
-const _ = require('lodash');
 
-function Simulation(stage, squares, gridSize, boardSize) {
+function Simulation(stage, squares, states, gridSize, boardSize) {
   this.squares = squares;
+  this.states = states;
   this.stage = stage;
   this.boardSize = boardSize;
   this.gridSize = gridSize;
@@ -40,7 +40,7 @@ Simulation.prototype.findNeighborIds = function(pos) {
 
 Simulation.prototype.countNumberOfOns = function(ids) {
   return ids.filter( id => {
-    return this.squares[id].state === 'on';
+    return this.states[id].state === 'on';
   }).length;
 };
 
@@ -61,17 +61,16 @@ Simulation.prototype.nextState = function(sq) {
 
 Simulation.prototype.updateAllStates = function() {
   performance.mark('begin-deep-clone');
-  // let squaresDup = _.cloneDeep(this.squares);
-  let squaresDup = this.squares;
+  let squaresDup = JSON.parse(JSON.stringify(this.states));
   performance.mark('end-deep-clone');
 
   performance.mark('begin-next-state');
-  Object.keys(this.squares).forEach( id => this.nextState(squaresDup[id]) );
+  Object.keys(this.states).forEach( id => this.nextState(squaresDup[id]) );
   performance.mark('end-next-state');
 
   performance.mark('begin-next-state-update');
   Object.keys(this.squares).forEach( id => {
-    this.squares[id].state = squaresDup[id].state;
+    this.states[id].state = squaresDup[id].state;
   });
   performance.mark('end-next-state-update');
 
@@ -106,26 +105,29 @@ Simulation.prototype.updateAllStates = function() {
 
 };
 
-Simulation.prototype.updateSquareColor = function(sq) {
+Simulation.prototype.updateSquareColor = function(id) {
+  let state = this.states[id].state;
+  let sq = this.squares[id];
+
   let color;
-  if(sq.state === 'off') {
+  if(state === 'off') {
     color = '#000';
-  } else if(sq.state === 'dying'){
+  } else if(state === 'dying'){
     color = 'red';
   } else {
     color = '#fff';
   }
-  sq.square.graphics.clear();
-  sq.square.graphics.beginStroke('#333');
-  sq.square.graphics.setStrokeStyle(1);
-  sq.square.snapToPixel = true;
-  sq.square.graphics.beginFill(color);
+  sq.graphics.clear();
+  sq.graphics.beginStroke('#333');
+  sq.graphics.setStrokeStyle(1);
+  sq.snapToPixel = true;
+  sq.graphics.beginFill(color);
 
-  sq.square.graphics.drawRect(0, 0, this.gridSize, this.gridSize);
+  sq.graphics.drawRect(0, 0, this.gridSize, this.gridSize);
 };
 
 Simulation.prototype.updateAllSquareColors = function() {
-  Object.keys(this.squares).forEach( id => this.updateSquareColor(this.squares[id]) );
+  Object.keys(this.squares).forEach( id => this.updateSquareColor(id) );
 };
 
 // TODO: remove performance logs
