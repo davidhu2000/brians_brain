@@ -7,6 +7,17 @@
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src='bundle.js'></script>
+
+    <script type="text/javascript">
+      function togglePlay() {
+        console.log('trying to pause');
+        console.log(createjs.Ticker.getPaused());
+        let paused = !createjs.Ticker.getPaused();
+        console.log(paused);
+        createjs.Ticker.setPaused(paused);
+        document.getElementById('play-button').innerHTML = paused ? 'Play' : 'Pause';
+      }
+    </script>
   </head>
   <body>
     <div class='container'>
@@ -26,6 +37,8 @@
                 <option value="" default disabled>--Select a preset--</option>
                 <option value="test1">Test1</option>
               </select>
+
+              <button onClick="togglePlay();" id='play-button' value='Play'>Play</button>
             </div>
 
             <canvas id='simCanvas' width='600px' height='600px' class='border'>

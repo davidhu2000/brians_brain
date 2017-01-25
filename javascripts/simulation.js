@@ -72,7 +72,6 @@ Simulation.prototype.updateAllStates = function() {
 };
 
 Simulation.prototype.updateSquareColor = function(sq) {
-  console.log(sq);
   let color;
   if(sq.state === 'off') {
     color = '#fff';
@@ -81,11 +80,8 @@ Simulation.prototype.updateSquareColor = function(sq) {
   } else {
     color = '#0072ff';
   }
-  // console.log(sq.pos);
-  // console.log(sq.state);
-  // console.log(color);
   sq.square.graphics.beginFill(color).drawRect(0, 0, this.gridSize, this.gridSize);
-  this.stage.update();
+  // this.stage.update();
 };
 
 Simulation.prototype.updateAllSquareColors = function() {
@@ -95,7 +91,7 @@ Simulation.prototype.updateAllSquareColors = function() {
 Simulation.prototype.updateBoard = function() {
   this.updateAllStates();
   this.updateAllSquareColors();
-  // this.stage.update();
+  this.stage.update();
 };
 
 
