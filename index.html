@@ -5,6 +5,8 @@
     <title>Brian's Brain</title>
 
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/stylesheets/main.css" />
 
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
@@ -31,20 +33,27 @@
 
         <div class='main-section'>
 
-          <aside class="col col-1 border">
+          <aside class="col col-2 border">
             test
           </aside>
 
-          <section class="col col-8 border main-board">
+          <section class="col col-7 border main-board">
 
             <nav class='navigation col-10 border'>
               <div>
                 <div>Presets: </div>
                 <select class="preset-selector" name="" value='initial'>
                   <option value="test1">Test1</option>
+                  <option value="test1">Test1</option>
+                  <option value="test1">Test1</option>
+                  <option value="test1">Test1</option>
+                  <option value="test1">Test1</option>
                 </select>
               </div>
-              <button onClick="togglePlay();" id='play-button' value='Play'>Play</button>
+              <div class="">
+                <button onClick="togglePlay();" id='play-button' value='play'>play</button>
+                <button onClick="" id='play-button' value='reset'>reset</button>
+              </div>
             </nav>
 
             <canvas id='simCanvas' width='600px' height='600px' class='border'>
@@ -53,7 +62,10 @@
           </section>
 
           <aside class="col col-1 border">
-            test
+            <div class="">
+              <i class='fa fa-question'></i>
+              <i class='fa fa-cog'></i>
+            </div>
           </aside>
         </div>
       </div>

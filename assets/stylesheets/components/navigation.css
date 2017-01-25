@@ -9,4 +9,10 @@ nav {
 select {
   background: white;
   width: 100px;
+  font: inherit;
+  font-size: 12px;
+}
+
+button:hover {
+  text-transform: uppercase;
 }

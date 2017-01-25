@@ -96,9 +96,30 @@ Simulation.prototype.updateAllSquareColors = function() {
 };
 
 Simulation.prototype.updateBoard = function() {
+  performance.mark('begin-state-change');
   this.updateAllStates();
+  performance.mark('end-state-change');
+
+  performance.mark('start-color-change');
   this.updateAllSquareColors();
+  performance.mark('end-color-change');
+
   this.stage.update();
+
+  performance.measure('stateChange', 'begin-state-change', 'end-state-change');
+  performance.measure('colorChange', 'start-color-change', 'end-color-change');
+
+  let stateChange = performance.getEntriesByName('stateChange');
+  let colorChange = performance.getEntriesByName('colorChange');
+
+  console.log('Avg State Change: ', stateChange.reduce( (total, measure) => {
+    return total + measure.duration;
+  }, 0) / stateChange.length);
+
+  console.log('Avg Color Change: ', colorChange.reduce( (total, measure) => {
+    return total + measure.duration;
+  }, 0) / colorChange.length);
+
 };
 
 
