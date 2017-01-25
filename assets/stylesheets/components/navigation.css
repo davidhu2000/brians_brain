@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+select {
+  background: white;
+  width: 100px;
+}

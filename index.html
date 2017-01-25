@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Brian's Brain</title>
-    <link rel="stylesheet" href="stylesheets/main.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="assets/stylesheets/main.css" />
+
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <script type="text/javascript" src='bundle.js'></script>
 
     <script type="text/javascript">
@@ -17,37 +21,44 @@
     </script>
   </head>
   <body>
+
+    <div class="cover"></div>
+
     <div class='container'>
+
       <div class='col col-9 col-offset-05 border'>
         <h1 class='main-header border'>Brian's Brain</h1>
 
         <div class='main-section'>
 
-          <div class="col col-1 border">
+          <aside class="col col-1 border">
             test
-          </div>
+          </aside>
 
-          <div class="col col-8 border main-board">
+          <section class="col col-8 border main-board">
 
-            <div class='navigation col-10 border'>
-              <select class="" name="">
-                <option value="" default disabled>--Select a preset--</option>
-                <option value="test1">Test1</option>
-              </select>
-
+            <nav class='navigation col-10 border'>
+              <div>
+                <div>Presets: </div>
+                <select class="preset-selector" name="" value='initial'>
+                  <option value="test1">Test1</option>
+                </select>
+              </div>
               <button onClick="togglePlay();" id='play-button' value='Play'>Play</button>
-            </div>
+            </nav>
 
             <canvas id='simCanvas' width='600px' height='600px' class='border'>
               The game board should appear here.
             </canvas>
-          </div>
+          </section>
 
-          <div class="col col-1 border">
+          <aside class="col col-1 border">
             test
-          </div>
+          </aside>
         </div>
       </div>
     </div>
+
+
   </body>
 </html>

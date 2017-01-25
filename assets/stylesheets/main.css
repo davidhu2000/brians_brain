@@ -1,0 +1,31 @@
+@import url('base/reset.css');
+@import url('base/grid.css');
+@import url('base/flex_setup.css');
+@import url('components/header.css');
+@import url('components/navigation.css');
+
+body {
+  /*background-image: url('../images/background.jpg');*/
+  font-family: 'Press Start 2P', cursive;
+  background-color: transparent;
+  color: white;
+}
+
+.cover {
+  position: absolute;
+  z-index: -10;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/background.jpg');
+  filter: blur(1px);
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.border {
+  border: 0.3px solid white;
+}
