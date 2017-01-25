@@ -75,14 +75,14 @@ Simulation.prototype.updateAllStates = function() {
 Simulation.prototype.updateSquareColor = function(sq) {
   let color;
   if(sq.state === 'off') {
-    color = '#fff';
+    color = '#000';
   } else if(sq.state === 'dying'){
-    color = '#00ffed';
+    color = 'red';
   } else {
-    color = '#0072ff';
+    color = '#fff';
   }
   sq.square.graphics.clear();
-  sq.square.graphics.beginStroke('#ccc');
+  sq.square.graphics.beginStroke('#333');
   sq.square.graphics.setStrokeStyle(1);
   sq.square.snapToPixel = true;
   sq.square.graphics.beginFill(color);

@@ -16,10 +16,10 @@ function generateGrid() {
     for(let c = 0; c < numSq; c++) {
       square = new createjs.Shape();
 
-      square.graphics.beginStroke('#ccc');
+      square.graphics.beginStroke('#333');
       square.graphics.setStrokeStyle(1);
       square.snapToPixel = true;
-      square.graphics.beginFill('#fff');
+      square.graphics.beginFill('#000');
 
       square.graphics.drawRect(0, 0, gridSize, gridSize);
       square.x = gridSize * c;
@@ -49,10 +49,10 @@ function changeGridColor(e) {
   let color;
 
   if(current.state === 'off') {
-    color = '#0072ff';
+    color = '#fff';
     current.state = 'on';
   } else {
-    color = '#fff';
+    color = '#000';
     current.state = 'off';
   }
 
@@ -60,14 +60,14 @@ function changeGridColor(e) {
 }
 
 
-createjs.Ticker.setFPS(20);
+createjs.Ticker.setFPS(30);
 function tick(event) {
   if(createjs.Ticker.getPaused()) {
     console.log('ticking');
     s.updateBoard();
+    stage.update(event);
   }
 
-  stage.update(event);
 }
 
 $(document).ready( () => {
