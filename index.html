@@ -15,10 +15,16 @@
     <script type="text/javascript" src='bundle.js'></script>
 
     <script type="text/javascript">
-      function togglePlay() {
-        let paused = !createjs.Ticker.getPaused();
-        createjs.Ticker.setPaused(paused);
-        document.getElementById('play-button').innerHTML = paused ? 'Play' : 'Pause';
+      function play() {
+        // let paused = !createjs.Ticker.getPaused();
+        createjs.Ticker.setPaused(true);
+        // document.getElementById('play-button').innerHTML = paused ? 'Play' : 'Pause';
+      }
+
+      function stop() {
+        // let paused = !createjs.Ticker.getPaused();
+        createjs.Ticker.setPaused(false);
+        // document.getElementById('play-button').innerHTML = paused ? 'Play' : 'Pause';
       }
     </script>
   </head>
@@ -34,7 +40,12 @@
         <div class='main-section'>
 
           <aside class="col col-2 border">
-            test
+            <ul>
+              <li>Click cells to turn it on.</li>
+              <li>Then click play.</li>
+            </ul>
+
+
           </aside>
 
           <section class="col col-7 border main-board">
@@ -51,8 +62,8 @@
                 </select>
               </div>
               <div class="">
-                <button onClick="togglePlay();" id='play-button' value='play'>play</button>
-                <button onClick="" id='play-button' value='reset'>reset</button>
+                <button onClick="play()" id='play-button' value='play'>play</button>
+                <button onClick="stop()" id='play-button' value='stop'>stop</button>
               </div>
             </nav>
 

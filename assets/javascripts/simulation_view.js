@@ -7,6 +7,38 @@ let squares = {};
 let boardSize = 600;
 let gridSize = 10;
 
+let deltas = [
+  [ 0, -1],
+  [ 1, -1],
+  [ 1,  0],
+  [ 1,  1],
+  [ 0,  1],
+  [-1,  1],
+  [-1,  0],
+  [-1, -1]
+];
+
+function findNeighborIds(pos) {
+  let neighbors = [];
+  pos = pos.split('_');
+  let posX = parseInt(pos[0]);
+  let posY = parseInt(pos[1]);
+
+  let nX;
+  let nY;
+
+  deltas.forEach( delta => {
+    nX = gridSize * delta[0] + posX;
+    nY = gridSize * delta[1] + posY;
+
+    if(nX >= 0 && nY >= 0 && nX < boardSize && nY < boardSize) {
+      neighbors.push(nX + '_' + nY );
+    }
+  });
+
+  return neighbors;
+}
+
 function generateGrid() {
   let square;
 
@@ -34,6 +66,7 @@ function generateGrid() {
         state: 'off',
         pos: id
       };
+      // console.log(squares);
     }
   }
   stage.update();

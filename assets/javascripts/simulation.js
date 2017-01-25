@@ -33,7 +33,6 @@ Simulation.prototype.findNeighborIds = function(pos) {
     if(nX >= 0 && nY >= 0 && nX < this.boardSize && nY < this.boardSize) {
       neighbors.push(nX + '_' + nY );
     }
-
   });
 
   return neighbors;
@@ -46,6 +45,7 @@ Simulation.prototype.countNumberOfOns = function(ids) {
 };
 
 Simulation.prototype.nextState = function(sq) {
+  // console.log(sq);
   if(sq.state === 'on') {
     sq.state = 'dying';
   } else if(sq.state === 'dying') {
@@ -60,12 +60,50 @@ Simulation.prototype.nextState = function(sq) {
 };
 
 Simulation.prototype.updateAllStates = function() {
+  performance.mark('begin-deep-clone');
+  // let squaresDup = _.cloneDeep(this.squares);
+  let squaresDup = this.squares;
+  performance.mark('end-deep-clone');
 
-  let squaresDup = _.cloneDeep(this.squares);
+  performance.mark('begin-next-state');
   Object.keys(this.squares).forEach( id => this.nextState(squaresDup[id]) );
+  performance.mark('end-next-state');
+
+  performance.mark('begin-next-state-update');
   Object.keys(this.squares).forEach( id => {
     this.squares[id].state = squaresDup[id].state;
   });
+  performance.mark('end-next-state-update');
+
+  performance.measure('deepClone', 'begin-deep-clone', 'end-deep-clone');
+
+  let deepClone = performance.getEntriesByName('deepClone');
+
+  let avgClone = deepClone.reduce( (total, measure) => {
+    return total + measure.duration;
+  }, 0) / deepClone.length;
+
+  performance.measure('nextState', 'begin-next-state', 'end-next-state');
+
+  let nextState = performance.getEntriesByName('nextState');
+
+  let avgState = nextState.reduce( (total, measure) => {
+    return total + measure.duration;
+  }, 0) / nextState.length;
+
+  performance.measure('nextUpdate', 'begin-next-state-update', 'end-next-state-update');
+
+  let nextUpdate = performance.getEntriesByName('nextUpdate');
+
+  let avgUpdate = nextUpdate.reduce( (total, measure) => {
+    return total + measure.duration;
+  }, 0) / nextUpdate.length;
+
+  console.log('Avg clone Change: ', avgClone, 'ms');
+  console.log('Avg state Change: ', avgState, 'ms');
+  console.log('Avg update Change: ', avgUpdate, 'ms');
+
+
 };
 
 Simulation.prototype.updateSquareColor = function(sq) {
@@ -90,36 +128,37 @@ Simulation.prototype.updateAllSquareColors = function() {
   Object.keys(this.squares).forEach( id => this.updateSquareColor(this.squares[id]) );
 };
 
+// TODO: remove performance logs
 Simulation.prototype.updateBoard = function() {
-  performance.mark('begin-state-change');
+  // performance.mark('begin-state-change');
   this.updateAllStates();
-  performance.mark('end-state-change');
+  // performance.mark('end-state-change');
 
-  performance.mark('start-color-change');
+  // performance.mark('start-color-change');
   this.updateAllSquareColors();
-  performance.mark('end-color-change');
+  // performance.mark('end-color-change');
 
   this.stage.update();
 
-  performance.measure('stateChange', 'begin-state-change', 'end-state-change');
-  performance.measure('colorChange', 'start-color-change', 'end-color-change');
-
-  let stateChange = performance.getEntriesByName('stateChange');
-  let colorChange = performance.getEntriesByName('colorChange');
-
-  let avgState = stateChange.reduce( (total, measure) => {
-    return total + measure.duration;
-  }, 0) / stateChange.length;
-
-  let avgColor = colorChange.reduce( (total, measure) => {
-    return total + measure.duration;
-  }, 0) / colorChange.length;
-
-  avgState = Math.round(avgState * 1000) / 1000;
-  avgColor = Math.round(avgColor * 1000) / 1000;
-
-  console.log('Avg State Change: ', avgState, 'ms');
-  console.log('Avg Color Change: ', avgColor, 'ms');
+  // performance.measure('stateChange', 'begin-state-change', 'end-state-change');
+  // performance.measure('colorChange', 'start-color-change', 'end-color-change');
+  //
+  // let stateChange = performance.getEntriesByName('stateChange');
+  // let colorChange = performance.getEntriesByName('colorChange');
+  //
+  // let avgState = stateChange.reduce( (total, measure) => {
+  //   return total + measure.duration;
+  // }, 0) / stateChange.length;
+  //
+  // let avgColor = colorChange.reduce( (total, measure) => {
+  //   return total + measure.duration;
+  // }, 0) / colorChange.length;
+  //
+  // avgState = Math.round(avgState * 1000) / 1000;
+  // avgColor = Math.round(avgColor * 1000) / 1000;
+  //
+  // console.log('Avg State Change: ', avgState, 'ms');
+  // console.log('Avg Color Change: ', avgColor, 'ms');
 
 };
 
