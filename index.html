@@ -10,10 +10,7 @@
 
     <script type="text/javascript">
       function togglePlay() {
-        console.log('trying to pause');
-        console.log(createjs.Ticker.getPaused());
         let paused = !createjs.Ticker.getPaused();
-        console.log(paused);
         createjs.Ticker.setPaused(paused);
         document.getElementById('play-button').innerHTML = paused ? 'Play' : 'Pause';
       }

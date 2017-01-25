@@ -64,6 +64,7 @@ Simulation.prototype.nextState = function(sq) {
 };
 
 Simulation.prototype.updateAllStates = function() {
+
   let squaresDup = _.cloneDeep(this.squares);
   Object.keys(this.squares).forEach( id => this.nextState(squaresDup[id]) );
   Object.keys(this.squares).forEach( id => {
@@ -80,7 +81,13 @@ Simulation.prototype.updateSquareColor = function(sq) {
   } else {
     color = '#0072ff';
   }
-  sq.square.graphics.beginFill(color).drawRect(0, 0, this.gridSize, this.gridSize);
+  sq.square.graphics.clear();
+  sq.square.graphics.beginStroke('#ccc');
+  sq.square.graphics.setStrokeStyle(1);
+  sq.square.snapToPixel = true;
+  sq.square.graphics.beginFill(color);
+
+  sq.square.graphics.drawRect(0, 0, this.gridSize, this.gridSize);
   // this.stage.update();
 };
 

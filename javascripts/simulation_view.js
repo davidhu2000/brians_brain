@@ -5,7 +5,7 @@ const Simulation = require('./simulation');
 let stage;
 let squares = {};
 let boardSize = 600;
-let gridSize = 50;
+let gridSize = 10;
 
 function generateGrid() {
   let square;
@@ -16,7 +16,7 @@ function generateGrid() {
     for(let c = 0; c < numSq; c++) {
       square = new createjs.Shape();
 
-      square.graphics.beginStroke('#000');
+      square.graphics.beginStroke('#ccc');
       square.graphics.setStrokeStyle(1);
       square.snapToPixel = true;
       square.graphics.beginFill('#fff');
@@ -60,12 +60,11 @@ function changeGridColor(e) {
 }
 
 
-createjs.Ticker.setFPS(60);
+createjs.Ticker.setFPS(20);
 function tick(event) {
   if(createjs.Ticker.getPaused()) {
     console.log('ticking');
     s.updateBoard();
-    stage.update();
   }
 
   stage.update(event);
