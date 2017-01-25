@@ -1,6 +1,6 @@
 /* global createjs */
 
-const Simulation = require('./simulation');
+import Simulation from './simulation';
 
 let stage;
 let squares = {};
@@ -63,7 +63,7 @@ function generateGrid() {
 
       let id = square.x + "_" + square.y;
       squares[id] = square;
-      
+
       states[id] = {
         state: 'off',
         pos: id
