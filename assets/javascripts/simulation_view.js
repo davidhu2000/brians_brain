@@ -76,6 +76,8 @@ $(document).ready( () => {
   let simulation = new Simulation(stage, squares, gridSize, boardSize);
   createjs.Ticker.addEventListener("tick", tick);
 
+
+  // TODO: for testing
   window.stage = stage;
   window.s = simulation;
   window.sqs = squares;

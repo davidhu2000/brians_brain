@@ -1,0 +1,29 @@
+.right-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right-bar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.right-bar-top i {
+  font-size: 50px;
+  padding: 10px;
+}
+
+.right-bar-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.right-bar-bottom i {
+  font-size: 50px;
+  padding: 10px;
+}

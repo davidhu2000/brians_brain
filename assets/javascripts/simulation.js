@@ -17,10 +17,6 @@ function Simulation(stage, squares, gridSize, boardSize) {
   ];
 }
 
-Simulation.prototype.start = function() {
-
-};
-
 Simulation.prototype.findNeighborIds = function(pos) {
   let neighbors = [];
   pos = pos.split('_');
@@ -88,7 +84,6 @@ Simulation.prototype.updateSquareColor = function(sq) {
   sq.square.graphics.beginFill(color);
 
   sq.square.graphics.drawRect(0, 0, this.gridSize, this.gridSize);
-  // this.stage.update();
 };
 
 Simulation.prototype.updateAllSquareColors = function() {
@@ -112,13 +107,19 @@ Simulation.prototype.updateBoard = function() {
   let stateChange = performance.getEntriesByName('stateChange');
   let colorChange = performance.getEntriesByName('colorChange');
 
-  console.log('Avg State Change: ', stateChange.reduce( (total, measure) => {
+  let avgState = stateChange.reduce( (total, measure) => {
     return total + measure.duration;
-  }, 0) / stateChange.length);
+  }, 0) / stateChange.length;
 
-  console.log('Avg Color Change: ', colorChange.reduce( (total, measure) => {
+  let avgColor = colorChange.reduce( (total, measure) => {
     return total + measure.duration;
-  }, 0) / colorChange.length);
+  }, 0) / colorChange.length;
+
+  avgState = Math.round(avgState * 1000) / 1000;
+  avgColor = Math.round(avgColor * 1000) / 1000;
+
+  console.log('Avg State Change: ', avgState, 'ms');
+  console.log('Avg Color Change: ', avgColor, 'ms');
 
 };
 
