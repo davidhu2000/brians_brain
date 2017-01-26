@@ -28,6 +28,10 @@
         $('#modal-blur').toggleClass('hidden');
       }
 
+      function reset() {
+        simulation.clearBoard();
+      }
+
     </script>
   </head>
   <body>
@@ -89,7 +93,7 @@
                 <img src="assets/images/on_state.png" alt="On state">
               </li>
               <li>
-                <p>If the cell has exactly two 'ON' neighbors</p>
+                <p>If cell has two 'ON' neighbors</p>
               </li>
           </ul>
 
@@ -98,7 +102,7 @@
       <button type="button" name="button" onClick="toggleModal()">Close</button>
     </div>
 
-    <div class='modal-blur hidden' id='modal-blur'></div>
+    <div class='modal-blur hidden' id='modal-blur' onClick="toggleModal()"></div>
     <div class="cover"></div>
 
     <div class='container'>
@@ -131,6 +135,7 @@
               <div class="buttons">
                 <button onClick="play()" id='play-button' value='play'>play</button>
                 <button onClick="stop()" id='play-button' value='stop'>stop</button>
+                <button onClick="reset()" id='play-button' value='reset'>reset</button>
               </div>
             </nav>
 
@@ -149,7 +154,7 @@
               <a href="https://www.github.com/davidhu2000">
                 <i class='fa fa-github'></i>
               </a>
-              <a href="https://www.linkedin.com/in/0davidhu2000">
+              <a href="https://www.linkedin.com/in/davidhu2000">
                 <i class='fa fa-linkedin-square'></i>
               </a>
             </div>

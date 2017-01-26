@@ -24,4 +24,9 @@ $(document).ready( () => {
 
   createjs.Ticker.addEventListener("tick", tick);
 
+  window.grid = grid;
+  window.stage = stage;
+  window.simulation = simulation;
+  window.sqs = grid.squares;
+
 });

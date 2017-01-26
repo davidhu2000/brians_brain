@@ -9,6 +9,7 @@ class Grid {
     this.gridSize = gridSize;
 
     this.handleClick = this.handleClick.bind(this);
+    this.clearBoard = this.clearBoard.bind(this);
   }
 
   generateGrid() {
@@ -64,6 +65,11 @@ class Grid {
     }
 
     currentSq.graphics.beginFill(color).drawRect(0, 0, this.gridSize, this.gridSize);
+  }
+
+  clearBoard() {
+    this.stage.clear();
+    this.generateGrid();
   }
 }
 
