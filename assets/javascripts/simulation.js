@@ -171,7 +171,6 @@ class Simulation {
       this.states[id].state = 'off';
     });
     this.updateBoard();
-
   }
 }
 
