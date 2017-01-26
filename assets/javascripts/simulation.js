@@ -14,10 +14,10 @@ class Simulation {
     ];
 
     this.presets = {
-      twinEyes: {
-        '290_270': 'on',
-        '300_270': 'on'
-      }
+      twinEyes: ['290_270', '300_270'],
+      theSpaceship: ['300_550', '310_550'],
+      boomerang: ['300_290', '300_320', '310_290', '310_320'],
+      diamond: ['290_270', '300_270', '290_280', '300_280']
     };
 
     this.clearBoard = this.clearBoard.bind(this);
@@ -196,9 +196,9 @@ class Simulation {
   }
 
   applyPreset(presetName) {
+    this.reset();
     let preset = this.presets[presetName];
-    console.log(preset);
-    Object.keys(preset).forEach( id => {
+    preset.forEach( id => {
       this.states[id].state = 'on';
       this.updateSquareColor(id);
     });
