@@ -12,16 +12,6 @@ $(document).ready( () => {
   grid.generateGrid();
   let simulation = new Simulation(stage, grid.squares, grid.states, gridSize, boardSize);
 
-  createjs.Ticker.setFPS(30);
-
-  function tick(event) {
-    if(createjs.Ticker.getPaused()) {
-      console.log('ticking');
-      simulation.updateBoard();
-      stage.update(event);
-    }
-  }
-
   document.getElementById('play-button').addEventListener('click', () => simulation.play() );
   document.getElementById('stop-button').addEventListener('click', () => simulation.stop() );
   document.getElementById('reset-button').addEventListener('click', () => simulation.reset() );
@@ -39,7 +29,21 @@ $(document).ready( () => {
     }
   });
 
+  createjs.Ticker.setFPS(30);
+
+  function tick(event) {
+    if(createjs.Ticker.getPaused()) {
+      console.log('ticking');
+      simulation.updateBoard();
+      stage.update(event);
+    }
+  }
+
   createjs.Ticker.addEventListener("tick", tick);
+
+  $('#preset-selector').change( (e) => {
+    simulation.applyPreset(e.target.value);
+  });
 
   window.grid = grid;
   window.stage = stage;

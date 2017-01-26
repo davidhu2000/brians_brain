@@ -13,6 +13,13 @@ class Simulation {
       [ 0,  1], [-1,  1], [-1,  0], [-1, -1]
     ];
 
+    this.presets = {
+      twinEyes: {
+        '290_270': 'on',
+        '300_270': 'on'
+      }
+    };
+
     this.clearBoard = this.clearBoard.bind(this);
   }
 
@@ -159,7 +166,9 @@ class Simulation {
     //
     // console.log('Avg State Change: ', avgState, 'ms');
     // console.log('Avg Color Change: ', avgColor, 'ms');
-
+    if(this.emptyBoard()) {
+      this.stop();
+    }
   }
 
   clearBoard() {
@@ -180,6 +189,21 @@ class Simulation {
   reset() {
     this.clearBoard();
     this.stop();
+  }
+
+  emptyBoard() {
+    return Object.values(this.states).every( s => s.state === 'off');
+  }
+
+  applyPreset(presetName) {
+    let preset = this.presets[presetName];
+    console.log(preset);
+    Object.keys(preset).forEach( id => {
+      this.states[id].state = 'on';
+      this.updateSquareColor(id);
+    });
+
+    this.stage.update();
   }
 }
 
