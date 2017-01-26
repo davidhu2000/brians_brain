@@ -1,3 +1,5 @@
+/* global createjs */
+
 class Simulation {
 
   constructor(stage, squares, states, gridSize, boardSize) {
@@ -7,14 +9,8 @@ class Simulation {
     this.boardSize = boardSize;
     this.gridSize = gridSize;
     this.deltas = [
-      [ 0, -1],
-      [ 1, -1],
-      [ 1,  0],
-      [ 1,  1],
-      [ 0,  1],
-      [-1,  1],
-      [-1,  0],
-      [-1, -1]
+      [ 0, -1], [ 1, -1], [ 1,  0], [ 1,  1],
+      [ 0,  1], [-1,  1], [-1,  0], [-1, -1]
     ];
 
     this.clearBoard = this.clearBoard.bind(this);
@@ -63,7 +59,7 @@ class Simulation {
   }
 
   updateAllStates() {
-    // performance.mark('begin-deep-clone'); 
+    // performance.mark('begin-deep-clone');
     let squaresDup = JSON.parse(JSON.stringify(this.states));
     // performance.mark('end-deep-clone');
 
@@ -171,6 +167,19 @@ class Simulation {
       this.states[id].state = 'off';
     });
     this.updateBoard();
+  }
+
+  play() {
+    createjs.Ticker.setPaused(true);
+  }
+
+  stop() {
+    createjs.Ticker.setPaused(false);
+  }
+
+  reset() {
+    this.clearBoard();
+    this.stop();
   }
 }
 

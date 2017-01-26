@@ -22,6 +22,23 @@ $(document).ready( () => {
     }
   }
 
+  document.getElementById('play-button').addEventListener('click', () => simulation.play() );
+  document.getElementById('stop-button').addEventListener('click', () => simulation.stop() );
+  document.getElementById('reset-button').addEventListener('click', () => simulation.reset() );
+
+  document.addEventListener('keypress', (e) => {
+
+    if(e.keyCode === 32) {
+      createjs.Ticker.setPaused(
+        !createjs.Ticker.getPaused()
+      );
+    }
+
+    if(e.keyCode === 114) {
+      simulation.reset();
+    }
+  });
+
   createjs.Ticker.addEventListener("tick", tick);
 
   window.grid = grid;

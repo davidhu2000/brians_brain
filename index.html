@@ -15,37 +15,10 @@
     <script type="text/javascript" src='bundle.js'></script>
 
     <script type="text/javascript">
-      function play() {
-        createjs.Ticker.setPaused(true);
-      }
-
-      function stop() {
-        createjs.Ticker.setPaused(false);
-      }
-
       function toggleModal() {
         $('#instruction').toggleClass('hidden');
         $('#modal-blur').toggleClass('hidden');
       }
-
-      function reset() {
-        simulation.clearBoard();
-        stop();
-      }
-
-      document.addEventListener('keypress', (e) => {
-        // console.log(e.keyCode);
-        if(e.keyCode === 32) {
-          createjs.Ticker.setPaused(
-            !createjs.Ticker.getPaused()
-          );
-        }
-
-        if(e.keyCode === 114) {
-          reset();
-        }
-      });
-
     </script>
   </head>
   <body>
@@ -126,11 +99,16 @@
 
         <div class='main-section'>
 
-          <aside class="col col-2 border">
-            <ul>
-              <li>Click cells to turn it on.</li>
-              <li>Then click play.</li>
+          <aside class="col col-2 border left-bar">
+            <ul class='basic-instruction'>
+              <li><br /></li>
+              <li>1. Click a cell to turn on.</li>
+              <li><br /></li>
+              <li>2. Then click play.</li>
             </ul>
+            <br />
+            <br />
+            <br />
             <br />
             <h1>Keyboard controls</h1>
             <ul class='keyboard-controls'>
@@ -161,9 +139,9 @@
                 </select>
               </div>
               <div class="buttons">
-                <button onClick="play()" id='play-button' value='play'>play</button>
-                <button onClick="stop()" id='play-button' value='stop'>stop</button>
-                <button onClick="reset()" id='play-button' value='reset'>reset</button>
+                <button id='play-button' value='play'>play</button>
+                <button id='stop-button' value='stop'>stop</button>
+                <button id='reset-button' value='reset'>reset</button>
               </div>
             </nav>
 
