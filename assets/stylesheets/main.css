@@ -5,6 +5,7 @@
 @import url('components/navigation.css');
 @import url('components/left_bar.css');
 @import url('components/right_bar.css');
+@import url('components/instructions.css');
 
 body {
   /*background-image: url('../images/background.jpg');*/

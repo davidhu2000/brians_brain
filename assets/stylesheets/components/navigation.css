@@ -8,9 +8,13 @@ nav {
 
 select {
   background: white;
-  width: 100px;
+  width: 200px;
   font: inherit;
   font-size: 12px;
+}
+
+button {
+  height: 100%;
 }
 
 button:hover {

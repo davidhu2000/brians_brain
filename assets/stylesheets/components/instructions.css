@@ -1,0 +1,88 @@
+.instruction-modal {
+  height: 60vh;
+  width: 60vw;
+  position: absolute;
+  top: 20vh;
+  left: 20vw;
+  background-color: #222;
+  z-index: 100;
+  box-shadow: 0 0 3px black;
+  padding: 10px;
+}
+
+.instruction-modal button {
+  height: 50px;
+}
+
+.instruction-modal button:hover {
+  text-transform: uppercase;
+}
+
+.instruction-modal h1 {
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.instruction-modal img {
+  height: 150px;
+  width: 150px;
+}
+
+.cell-state-list {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.cell-state-list li{
+  padding: 5px;
+}
+
+.cell-state-list img {
+  height: 50px;
+  width: 50px;
+  margin: 3px auto;
+}
+
+.state-transition {
+  padding: 10px;
+  padding-top: 30px;
+}
+
+.state-transition i {
+  font-size: 30px;
+  line-height: 50px;
+}
+
+.state-transition p {
+  line-height: 50px;
+}
+
+.state-transition img {
+  height: 50px;
+  width: 50px;
+}
+
+.state-transition ul {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.state-transition ul li {
+  padding-right: 10px;
+}
+
+.modal-blur {
+  width: 100vw;
+  height: 100vh;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.9);
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}

@@ -39,7 +39,6 @@ class Grid {
           state: 'off',
           pos: id
         };
-        // console.log(squares);
       }
     }
     this.stage.update();
@@ -59,11 +58,9 @@ class Grid {
     if(currentState.state === 'off') {
       color = '#fff';
       currentState.state = 'on';
-      // currentState.state = 'on';
     } else {
       color = '#000';
       currentState.state = 'off';
-      // currentState.state = 'off';
     }
 
     currentSq.graphics.beginFill(color).drawRect(0, 0, this.gridSize, this.gridSize);
