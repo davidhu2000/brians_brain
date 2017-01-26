@@ -33,6 +33,19 @@
         stop();
       }
 
+      document.addEventListener('keypress', (e) => {
+        // console.log(e.keyCode);
+        if(e.keyCode === 32) {
+          createjs.Ticker.setPaused(
+            !createjs.Ticker.getPaused()
+          );
+        }
+
+        if(e.keyCode === 114) {
+          reset();
+        }
+      });
+
     </script>
   </head>
   <body>
@@ -117,6 +130,20 @@
             <ul>
               <li>Click cells to turn it on.</li>
               <li>Then click play.</li>
+            </ul>
+            <br />
+            <h1>Keyboard controls</h1>
+            <ul class='keyboard-controls'>
+              <li>
+                Press
+                <img src="assets/images/spacebar.png" alt="Space Bar" />
+                To play/pause
+              </li>
+              <li>
+                Press
+                <img src='assets/images/keyboard_key_r.png' alt='R key' class='r-key'/>
+                To reset board
+              </li>
             </ul>
           </aside>
 

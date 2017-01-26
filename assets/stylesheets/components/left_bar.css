@@ -1,0 +1,21 @@
+.keyboard-controls {
+  font-size: 12px;
+}
+
+.keyboard-controls img {
+  height: 30px;
+  margin: 0 auto;r
+}
+
+.keyboard-controls li {
+  margin: 30px 10px;
+  text-align: center;
+}
+
+.keyboard-controls li * {
+  padding: 3px;
+}
+
+.r-key {
+  width: 30px;
+}
