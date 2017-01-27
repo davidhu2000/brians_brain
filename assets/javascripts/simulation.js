@@ -66,6 +66,7 @@ class Simulation {
   }
 
   updateAllStates() {
+    // console.log('update');
     // performance.mark('begin-deep-clone');
     let squaresDup = JSON.parse(JSON.stringify(this.states));
     // performance.mark('end-deep-clone');

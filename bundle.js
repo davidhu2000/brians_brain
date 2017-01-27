@@ -200,6 +200,7 @@
 	    value: function updateAllStates() {
 	      var _this3 = this;
 	
+	      // console.log('update');
 	      // performance.mark('begin-deep-clone');
 	      var squaresDup = JSON.parse(JSON.stringify(this.states));
 	      // performance.mark('end-deep-clone');
