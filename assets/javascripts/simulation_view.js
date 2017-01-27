@@ -44,9 +44,4 @@ $(document).ready( () => {
     simulation.applyPreset(e.target.value);
   });
 
-  window.grid = grid;
-  window.stage = stage;
-  window.simulation = simulation;
-  window.sqs = grid.squares;
-
 });

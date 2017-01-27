@@ -14,10 +14,10 @@ class Simulation {
     ];
 
     this.presets = {
-      twinEyes: ['290_270', '300_270'],
+      twinEyes:     ['290_270', '300_270'],
       theSpaceship: ['300_550', '310_550'],
-      boomerang: ['300_290', '300_320', '310_290', '310_320'],
-      diamond: ['290_270', '300_270', '290_280', '300_280']
+      boomerang:    ['300_290', '300_320', '310_290', '310_320'],
+      diamond:      ['290_270', '300_270', '290_280', '300_280']
     };
 
     this.clearBoard = this.clearBoard.bind(this);
@@ -51,7 +51,6 @@ class Simulation {
   }
 
   nextState(sq) {
-    // console.log(sq);
     if(sq.state === 'on') {
       sq.state = 'dying';
     } else if(sq.state === 'dying') {
@@ -66,50 +65,12 @@ class Simulation {
   }
 
   updateAllStates() {
-    // console.log('update');
-    // performance.mark('begin-deep-clone');
+
     let squaresDup = JSON.parse(JSON.stringify(this.states));
-    // performance.mark('end-deep-clone');
-
-    // performance.mark('begin-next-state');
     Object.keys(this.states).forEach( id => this.nextState(squaresDup[id]) );
-    // performance.mark('end-next-state');
-
-    // performance.mark('begin-next-state-update');
     Object.keys(this.squares).forEach( id => {
       this.states[id].state = squaresDup[id].state;
     });
-    // performance.mark('end-next-state-update');
-
-    // performance.measure('deepClone', 'begin-deep-clone', 'end-deep-clone');
-    //
-    // let deepClone = performance.getEntriesByName('deepClone');
-    //
-    // let avgClone = deepClone.reduce( (total, measure) => {
-    //   return total + measure.duration;
-    // }, 0) / deepClone.length;
-    //
-    // performance.measure('nextState', 'begin-next-state', 'end-next-state');
-    //
-    // let nextState = performance.getEntriesByName('nextState');
-    //
-    // let avgState = nextState.reduce( (total, measure) => {
-    //   return total + measure.duration;
-    // }, 0) / nextState.length;
-    //
-    // performance.measure('nextUpdate', 'begin-next-state-update', 'end-next-state-update');
-    //
-    // let nextUpdate = performance.getEntriesByName('nextUpdate');
-    //
-    // let avgUpdate = nextUpdate.reduce( (total, measure) => {
-    //   return total + measure.duration;
-    // }, 0) / nextUpdate.length;
-    //
-    // console.log('Avg clone Change: ', avgClone, 'ms');
-    // console.log('Avg state Change: ', avgState, 'ms');
-    // console.log('Avg update Change: ', avgUpdate, 'ms');
-
-
   }
 
   updateSquareColor(id) {
@@ -138,35 +99,10 @@ class Simulation {
   }
 
   updateBoard() {
-    // performance.mark('begin-state-change');
     this.updateAllStates();
-    // performance.mark('end-state-change');
-
-    // performance.mark('start-color-change');
     this.updateAllSquareColors();
-    // performance.mark('end-color-change');
-
     this.stage.update();
 
-    // performance.measure('stateChange', 'begin-state-change', 'end-state-change');
-    // performance.measure('colorChange', 'start-color-change', 'end-color-change');
-    //
-    // let stateChange = performance.getEntriesByName('stateChange');
-    // let colorChange = performance.getEntriesByName('colorChange');
-    //
-    // let avgState = stateChange.reduce( (total, measure) => {
-    //   return total + measure.duration;
-    // }, 0) / stateChange.length;
-    //
-    // let avgColor = colorChange.reduce( (total, measure) => {
-    //   return total + measure.duration;
-    // }, 0) / colorChange.length;
-    //
-    // avgState = Math.round(avgState * 1000) / 1000;
-    // avgColor = Math.round(avgColor * 1000) / 1000;
-    //
-    // console.log('Avg State Change: ', avgState, 'ms');
-    // console.log('Avg Color Change: ', avgColor, 'ms');
     if(this.emptyBoard()) {
       this.stop();
     }
