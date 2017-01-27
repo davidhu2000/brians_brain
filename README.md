@@ -10,6 +10,10 @@ This game is built using JavaScript, HTML5 Canvas, and `easel.js`. The game feat
 
 ![Simulation animation](assets/images/simulation.gif)
 
+This simulation also features an instruction modal.
+
+![Instruction Modal](assets/images/instruction_modal.png)
+
 ## Instructions
 
 The simulation has the following rules
