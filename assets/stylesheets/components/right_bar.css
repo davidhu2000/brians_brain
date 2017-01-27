@@ -14,6 +14,11 @@
 .right-bar-top i {
   font-size: 50px;
   padding: 10px;
+  cursor: pointer;
+}
+
+.right-bar-top i:hover {
+  color: #AAA;
 }
 
 .right-bar-bottom {
@@ -26,4 +31,8 @@
 .right-bar-bottom i {
   font-size: 50px;
   padding: 10px;
+}
+
+.right-bar-bottom i:hover {
+  color: #aaa;
 }
