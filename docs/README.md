@@ -1,4 +1,4 @@
-# Brian's Brain
+# Brian's Brain Development Doc
 
 Brian's Brain is a cellular automaton that has the following rules
 

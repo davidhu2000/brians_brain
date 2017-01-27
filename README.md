@@ -1,5 +1,3 @@
-[Development Readme](docs/development_readme.md)
-
 # Brian's Brain
 
 [Brian's Brain Live](https://davidhu2000.github.io/brians_brain/)
