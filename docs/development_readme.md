@@ -49,9 +49,9 @@ This simulation will use the following technologies:
 
 This project will include several javascript files
 
-- `board.js` will render the gameboard.
+- `grid.js` will render the gameboard.
 - `simulation.js` will handle the logic of the simulation and determine the new state of the cell.
-- `cell.js` will be used as an object that track a cell's current state.
+- `simulation_view.js` will handle the creation of grid and the stage.
 
 ## Implementation Timeline
 
@@ -75,7 +75,6 @@ This project will include several javascript files
 
 **Day 4**
 
-- Allow user to customize the board color and cell color.
 - Allow user to pause simulation and create new initial state.
 - Create a sample list of initial states that the user can choose from.
 

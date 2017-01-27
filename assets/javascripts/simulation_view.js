@@ -33,7 +33,6 @@ $(document).ready( () => {
 
   function tick(event) {
     if(createjs.Ticker.getPaused()) {
-      console.log('ticking');
       simulation.updateBoard();
       stage.update(event);
     }

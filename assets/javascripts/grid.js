@@ -52,7 +52,6 @@ class Grid {
 
   changeGridColor(e) {
     let id = e.target.x + "_" + e.target.y;
-    console.log(id);
     let currentSq = this.squares[id];
     let currentState = this.states[id];
     let color;
