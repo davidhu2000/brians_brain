@@ -102,7 +102,10 @@ This is necessary because the new state is dependent on the old state, so the st
 - `babel-loader`
 - `babel-reset-es2015`
 - `webpack'`
-- google fonts
-- font awesome
 - `createjs`
 - `jQuery`
+
+## Future Implementations
+- Allow for board and state color customizations
+- Add different sets of simulation rules
+- Allow user to create their own rules
