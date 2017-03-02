@@ -25,10 +25,18 @@ body {
 
 .container {
   height: 100vh;
+  min-width: 960px;
   display: flex;
   align-items: center;
 }
 
 .border {
   border: 0.3px solid white;
+}
+
+@media all and (max-width: 900px) {
+  .container {
+    width: 800px;
+    min-width: 800px;
+  }
 }

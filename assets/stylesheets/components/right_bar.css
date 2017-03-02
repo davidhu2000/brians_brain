@@ -36,3 +36,9 @@
 .right-bar-bottom i:hover {
   color: #aaa;
 }
+
+@media all and (max-width: 900px) {
+  .right-bar {
+    display: none;
+  }
+}

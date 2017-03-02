@@ -23,3 +23,9 @@
 .r-key {
   width: 30px;
 }
+
+@media all and (max-width: 900px) {
+  .left-bar {
+    display: none;
+  }
+}
