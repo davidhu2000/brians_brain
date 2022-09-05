@@ -8,7 +8,6 @@
 @import url('components/instructions.css');
 
 body {
-  /*background-image: url('../images/background.jpg');*/
   font-family: 'Press Start 2P', cursive;
   background-color: transparent;
   color: white;
@@ -19,7 +18,7 @@ body {
   z-index: -10;
   width: 100vw;
   height: 100vh;
-  background-image: url('../images/background.jpg');
+  background-image: url('../images/background.webp');
   filter: blur(1px);
 }
 
