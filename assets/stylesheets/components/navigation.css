@@ -8,9 +8,9 @@ nav {
 
 select {
   background: white;
-  width: 230px;
   font: inherit;
-  font-size: 11px;
+  font-size: 14px;
+  height: 24px
 }
 
 button {
